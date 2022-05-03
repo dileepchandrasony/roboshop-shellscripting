@@ -5,7 +5,7 @@ source common.sh
 CheckRootUser
 
 ECHO "Installing Nginx"
-yum install nginx -y &>> &{LOG_FILE}
+yum install nginx -y &>> ${LOG_FILE}
 StatusCheck $?
 
 #systemctl start nginx
