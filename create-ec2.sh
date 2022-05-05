@@ -32,7 +32,7 @@ IP_ADDRESS=$(aws ec2 describe-instances --instance-ids ${INSTANCE_ID} --output t
 
 echo "IP ADDRESS of $NAME is $IP_ADDRESS"
 
-sed -e "s/COMPONENT/$NAME/" -e "s/IP_ADDRESS/$IP_ADDRESS" dns.json > /tmp/dns.json
+sed -e "s/COMPONENT/$NAME/" -e "s/IP_ADDRESS/$IP_ADDRESS/" dns.json > /tmp/dns.json
 
 aws route53 change-resource-record-sets --hosted-zone-id Z015361910VBDS6TXDD5T --change-batch file:///tmp/dns.json &> /dev/null
 
