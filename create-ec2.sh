@@ -8,8 +8,8 @@ fi
 
 NAME=$1
 
-if [ "$1" == "list" ]
-then
+#if [ "$1" == "list" ]
+#then
 
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" --output table | grep ImageId | awk '{print $4}')
