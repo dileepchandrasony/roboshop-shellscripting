@@ -8,8 +8,13 @@ fi
 
 NAME=$1
 
-#if [ "$1" == "list" ]
-#then
+aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId &> /dev/null
+
+if [ $? -eq 0 ]
+then
+  echo "Instance Already Exists"
+  exit 0
+fi
 
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" --output table | grep ImageId | awk '{print $4}')
