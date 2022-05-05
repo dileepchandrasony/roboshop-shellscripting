@@ -22,9 +22,9 @@ aws ec2 run-instances --image-id $AMI_ID --instance-type t2.micro --instance-mar
 
 echo "Instance $NAME created"
 
-sleep 15
+sleep 60
 
-INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId | awk '{print $4}')
+INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=$NAME Name=state,Values=active --output table | grep InstanceId | awk '{print $4}')
 
 echo "Instance ID of $NAME is ${INSTANCE_ID}"
 
