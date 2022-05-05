@@ -26,7 +26,7 @@ sleep 15
 
 INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId | awk '{print $4}')
 
-echo "Instance ID of $NAME is $INSTANCE_ID"
+echo "Instance ID of $NAME is ${INSTANCE_ID}"
 
 IP_ADDRESS=$(aws ec2 describe-instances --instance-ids ${INSTANCE_ID} --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
 
