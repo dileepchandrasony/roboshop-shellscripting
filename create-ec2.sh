@@ -10,7 +10,7 @@ NAME=$1
 
 if [ "$1" == "list" ]
 then
-  aws ec2 describe-instances  --query "Reservations[*].Instances[*].{Privateip:PrivateIpAddress,Publicip:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  --output table
+  aws ec2 describe-instances  --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  --output table
   exit 0
 fi
 
