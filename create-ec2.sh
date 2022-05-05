@@ -12,10 +12,9 @@ aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} N
 
 if [ $? -eq 0 ]
 then
-  echo "Instance Already Exists"
+  echo "Instance $NAME Already Exists"
   exit 0
 fi
-
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" --output table | grep ImageId | awk '{print $4}')
 
