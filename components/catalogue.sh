@@ -3,5 +3,6 @@
 source common.sh
 CheckRootUser
 
-
+COMPONENT=catalogue
+NODEJS
 
