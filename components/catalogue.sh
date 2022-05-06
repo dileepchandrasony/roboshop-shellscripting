@@ -21,7 +21,7 @@ then
 fi
 
 ECHO "Downloading application content"
-$ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>> ${LOG_FILE}
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip" &>> ${LOG_FILE}
 StatusCheck $?
 
 ECHO "Extracting application content"
