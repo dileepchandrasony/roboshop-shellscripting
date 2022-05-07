@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-for Arg in "$@"
+for Arg in frontend1 cart1 user1
 do
 
 if [ -z "${Arg}" ]
