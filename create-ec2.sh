@@ -42,4 +42,8 @@ sed -e "s/COMPONENT/$NAME/" -e "s/IP_ADDRESS/$IP_ADDRESS/" dns.json > /tmp/dns.j
 
 aws route53 change-resource-record-sets --hosted-zone-id Z0267794157E4LJCNMTNH --change-batch file:///tmp/dns.json &> /dev/null
 
-echo "DNS record created for $NAME instance"
+if [ $? -eq 0 ]
+then
+  echo "DNS record created for $NAME instance"
+else
+  echo "DNS record creation failed for $NAME"
