@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+for var in "$@"
+do
+
 if [ -z "$1" ]
 then
   echo "Instance name is not passed as an argument"
@@ -48,3 +52,4 @@ then
 else
   echo "DNS record creation failed for $NAME"
 fi
+done
