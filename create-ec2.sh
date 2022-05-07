@@ -40,7 +40,7 @@ echo "IP ADDRESS of $NAME is $IP_ADDRESS"
 
 sed -e "s/COMPONENT/$NAME/" -e "s/IP_ADDRESS/$IP_ADDRESS/" dns.json > /tmp/dns.json
 
-aws route53 change-resource-record-sets --hosted-zone-id Z0267794157E4LJCNMTNH --change-batch file:///tmp/dns.json &> /dev/null
+aws route53 change-resource-record-sets --hosted-zone-id Z0267794157E4LJCNMTNH --change-batch file:///tmp/dns.json &>> /dev/null
 
 if [ $? -eq 0 ]
 then
