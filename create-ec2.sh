@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 
-for var in "$@"
+for Arg in "$@"
 do
 
-if [ -z "$1" ]
+if [ -z "${Arg}" ]
 then
   echo "Instance name is not passed as an argument"
   exit 1
 fi
 
-NAME=$1
+NAME=${Arg}
 
-if [ "$1" == "list" ]
+if [ "${Arg}" == "list" ]
 then
   aws ec2 describe-instances  --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  --output table
   exit 0
