@@ -49,6 +49,7 @@ StatusCheck $?
 }
 
 SYSTEMD_SETUP() {
+  chown roboshop:roboshop /home/roboshop/${COMPONENT} -R
 ECHO "Updating SystemD file"
 sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/CARTHOST/cart.roboshop.internal/' -e 's/USERHOST/user.roboshop.internal/' -e 's/AMQPHOST/rabbitmq.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service
 StatusCheck $?
@@ -69,10 +70,13 @@ NODEJS() {
   yum install nodejs gcc-c++ -y &>> ${LOG_FILE}
   StatusCheck $?
 
-  ECHO "Installing NodeJS"
-  cd /home/roboshop/${COMPONENT} && npm install &>> ${LOG_FILE} && chown roboshop:roboshop /home/roboshop/${COMPONENT} -R
+  APPLICATION_SETUP
+
+  ECHO "Installing user component"
+  cd /home/roboshop/${COMPONENT} && npm install &>> ${LOG_FILE}
   StatusCheck $?
 
+SYSTEMD_SETUP
 
 }
 
