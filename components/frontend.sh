@@ -50,6 +50,6 @@ StatusCheck $?
 
 echo -e "\n"
 
-ECHO "Start Nginx Service"
+ECHO "Start Nginx Service"R
 systemctl enable nginx &>> ${LOG_FILE} && systemctl restart nginx &>> ${LOG_FILE}
 StatusCheck $?
