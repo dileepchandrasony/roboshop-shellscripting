@@ -37,7 +37,7 @@ StatusCheck $?
 
 echo -e "\n"
 
-ECHO "Copy Roboshop Nginx Config"
+ECHO "Copying Roboshop Nginx Config"
 mv localhost.conf /etc/nginx/default.d/roboshop.conf &>> ${LOG_FILE}
 StatusCheck $?
 
@@ -53,6 +53,6 @@ done
 
 echo -e "\n"
 
-ECHO "Start Nginx Service"
+ECHO "Starting Nginx Service"
 systemctl enable nginx &>> ${LOG_FILE} && systemctl restart nginx &>> ${LOG_FILE}
 StatusCheck $?
