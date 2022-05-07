@@ -47,3 +47,4 @@ then
   echo "DNS record created for $NAME instance"
 else
   echo "DNS record creation failed for $NAME"
+fi
