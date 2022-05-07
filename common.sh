@@ -83,7 +83,7 @@ SYSTEMD_SETUP
 JAVA() {
 
 ECHO "Installing Java and Maven"
-yum install maven -y &>> 4{LOG_FILE}
+yum install maven -y &>> ${LOG_FILE}
 StatusCheck $?
 
 APPLICATION_SETUP
