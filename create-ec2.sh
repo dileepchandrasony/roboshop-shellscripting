@@ -4,11 +4,11 @@
 for Arg in frontend1 cart1 user1
 do
 
-if [ -z "${Arg}" ]
-then
-  echo "Instance name is not passed as an argument"
-  exit 1
-fi
+#if [ -z "${Arg}" ]
+#then
+#  echo "Instance name is not passed as an argument"
+#  exit 1
+#fi
 
 NAME=${Arg}
 
