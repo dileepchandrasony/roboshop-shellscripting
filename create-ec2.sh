@@ -2,8 +2,6 @@
 
 
 #for Arg in "$@"
-while read Arg
-do
 
 if [ -z "${Arg}" ]
 then
@@ -11,13 +9,17 @@ then
   exit 1
 fi
 
-NAME=${Arg}
-
 if [ "${Arg}" == "list" ]
 then
   aws ec2 describe-instances  --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  --output table
   exit 0
 fi
+
+
+while read Arg
+do
+
+NAME=${Arg}
 
 aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId &> /dev/null
 
