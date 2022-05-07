@@ -39,7 +39,7 @@ APPLICATION_SETUP() {
    fi
 
 ECHO "Downloading application content"
-curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>> ${LOG_FILE}
+curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>> ${LOG_FILE}
 StatusCheck $?
 
 ECHO "Extracting application content"
@@ -86,6 +86,48 @@ APPLICATION_SETUP
 
 ECHO "Compiling maven package"
 cd /home/roboshop/${COMPONENT} && mvn clean package &>> ${LOG_FILE} && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
+StatusCheck $?
+
+SYSTEMD_SETUP
+}
+
+
+PYTHON() {
+
+ECHO "Installing Python"
+yum install python36 gcc python3-devel -y &>>${LOG_FILE}
+StatusCheck $?
+
+
+APPLICATION_SETUP
+
+ECHO "Installing python dependencies"
+cd /home/roboshop/${COMPONENT} &>>${LOG_FILE} && pip3 install -r requirements.txt &>>${LOG_FILE}
+StatusCheck $?
+
+
+USER_ID=$(id -u roboshop)
+GROUP_ID=$(id -g roboshop)
+
+ECHO "Updating Roboshop configuration"
+sed -i -e "/^uid/ c uid = ${USER_ID}" -e "/^gid/ c gid = ${GROUP_ID}" /home/roboshop/${COMPONENT}/${COMPONENT}.ini &>>${LOG_FILE}
+StatusCheck $?
+
+SYSTEMD_SETUP
+}
+
+
+GOLANG() {
+
+ECHO "Installing golang"
+yum install golang -y &>>${LOG_FILE}
+StatusCheck $?
+
+
+APPLICATION_SETUP
+
+ECHO "Configuring GOLANG"
+cd /home/roboshop/${COMPONENT} &>>${LOG_FILE} && go mod init dispatch &>>${LOG_FILE} && go get &>>${LOG_FILE} && go build &>>${LOG_FILE}
 StatusCheck $?
 
 SYSTEMD_SETUP
