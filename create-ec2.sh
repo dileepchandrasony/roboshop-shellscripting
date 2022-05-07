@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 
-for Arg in "$@"
+#for Arg in "$@"
+while read Arg
 do
 
 if [ -z "${Arg}" ]
