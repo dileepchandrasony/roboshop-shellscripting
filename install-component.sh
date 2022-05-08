@@ -2,7 +2,7 @@
 
 component=$1
 
-sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@3.91.9.250
+sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@54.83.109.215
 
 set-hostanme ${component}
 
