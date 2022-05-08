@@ -12,7 +12,7 @@ sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@18.234.82.125
 
 #ECHO "Setting up hostname"
 
-sshpass -f rootpwd.sh ssh root@18.234.82.125 'set-hostname ${component}'
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'set-hostname frontend'
 #&>> ${LOG_FILE}
 #StatusCheck $?
 
@@ -26,7 +26,7 @@ sshpass -f rootpwd.sh ssh root@18.234.82.125 'git pull'
 
 sshpass -f rootpwd.sh ssh root@18.234.82.125 'cd roboshop-shellscripting'
 
-sshpass -f rootpwd.sh ssh root@18.234.82.125 'make ${component}'
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'make frontend'
 
 #ECHO "logging out"
 sshpass -f rootpwd.sh ssh root@18.234.82.125 'exit'
