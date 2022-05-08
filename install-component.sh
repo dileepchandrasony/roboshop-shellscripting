@@ -19,6 +19,8 @@ set-hostname ${component}
 
 #ECHO "Cloning git repo"
 git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git
+
+git pull
 #&>> ${LOG_FILE}
 #StatusCheck $?
 
