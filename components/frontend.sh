@@ -43,13 +43,13 @@ StatusCheck $?
 
 echo -e "\n"
 
-ECHO "Updating Ngnix configuration"
-for component in catalogue user cart shipping payment
-do
-  ECHO "Updating configuration for ${component}"
-  sed -i -e "/${component}/ s/localhost/${component}.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
-StatusCheck $?
-done
+#ECHO "Updating Ngnix configuration"
+#for component in catalogue user cart shipping payment
+#do
+#  ECHO "Updating configuration for ${component}"
+#  sed -i -e "/${component}/ s/localhost/${component}.roboshop.internal/" /etc/nginx/default.d/roboshop.conf
+#StatusCheck $?
+#done
 
 echo -e "\n"
 
