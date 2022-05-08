@@ -18,16 +18,16 @@ sshpass -f rootpwd.sh ssh root@18.234.82.125 'set-hostname ${component}'
 
 
 #ECHO "Cloning git repo"
-git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git'
 
-git pull
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'git pull'
 #&>> ${LOG_FILE}
 #StatusCheck $?
 
-cd roboshop-shellscripting
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'cd roboshop-shellscripting'
 
-make ${component}
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'make ${component}'
 
 #ECHO "logging out"
-logout
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'logout'
 #StatusCheck $?
