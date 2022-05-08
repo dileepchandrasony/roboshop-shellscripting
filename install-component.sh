@@ -13,6 +13,8 @@ sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@18.234.82.125
 #ECHO "Setting up hostname"
 
 sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'set-hostname frontend'
+
+sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'sleep 15'
 #git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git;git pull;cd roboshop-shellscripting;make frontend;exit'
 #&>> ${LOG_FILE}
 #StatusCheck $?
