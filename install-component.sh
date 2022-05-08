@@ -6,7 +6,7 @@ component=$1
 
 #ECHO "Connecting to Instance"
 
-sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@18.234.82.125
+#sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@18.234.82.125
 
 #sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'sleep 15'
 
@@ -25,11 +25,13 @@ sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'set-hostname frontend'
 #ECHO "Cloning git repo"
 sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git'
 
+sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'cd roboshop-shellscripting'
+
 sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'git pull'
 ##&>> ${LOG_FILE}
 ##StatusCheck $?
 #
-sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'cd roboshop-shellscripting'
+
 #
 sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'make frontend'
 #
