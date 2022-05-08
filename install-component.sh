@@ -14,10 +14,7 @@ component=$1
 
 #ECHO "Setting up hostname"
 
-sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'set-hostname frontend'
-
-
-#git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git;git pull;cd roboshop-shellscripting;make frontend;exit'
+sshpass -f rootpwd.sh ssh -t root@18.234.82.125 'set-hostname frontend;git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git;cd roboshop-shellscripting;git pull;make frontend;exit'
 #&>> ${LOG_FILE}
 #StatusCheck $?
 
