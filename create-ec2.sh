@@ -3,17 +3,20 @@
 
 #for Arg in "$@"
 
+if [ "$1" == "list" ]
+then
+  aws ec2 describe-instances  --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  --output table
+  exit 0
+fi
+
+
 if ! [ -f "$1" ]
 then
   echo "You should pass an input file as a parameter to this script"
   exit 1
 fi
 
-if [ "$1" == "list" ]
-then
-  aws ec2 describe-instances  --query "Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress,PublicIP:PublicIpAddress,Name:Tags[?Key=='Name']|[0].Value,Status:State.Name}"  --output table
-  exit 0
-fi
+
 
 
 while read Arg
