@@ -11,7 +11,7 @@ sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@54.83.109.215 &>> ${L
 StatusCheck $?
 
 ECHO "Setting up hostname"
-set-hostanme ${component} &>> ${LOG_FILE}
+set-hostname ${component} &>> ${LOG_FILE}
 StatusCheck $?
 
 
