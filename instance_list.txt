@@ -7,5 +7,3 @@ cart
 mysql
 shipping
 rabbitmq
-payment
-dispatch
