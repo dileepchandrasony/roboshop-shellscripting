@@ -29,5 +29,5 @@ sshpass -f rootpwd.sh ssh root@18.234.82.125 'cd roboshop-shellscripting'
 sshpass -f rootpwd.sh ssh root@18.234.82.125 'make ${component}'
 
 #ECHO "logging out"
-sshpass -f rootpwd.sh ssh root@18.234.82.125 'logout'
+sshpass -f rootpwd.sh ssh root@18.234.82.125 'exit'
 #StatusCheck $?
