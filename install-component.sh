@@ -6,13 +6,18 @@ component=$1
 
 ECHO "Connecting to Instance"
 
-sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@54.83.109.215
+sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@54.83.109.215 &>> ${LOG_FILE}
 
 StatusCheck $?
 
-set-hostanme ${component}
+ECHO "Setting up hostname"
+set-hostanme ${component} &>> ${LOG_FILE}
+StatusCheck $?
 
-git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git
+
+ECHO "Cloning git repo"
+git clone https://github.com/dileepchandrasony/roboshop-shellscripting.git &>> ${LOG_FILE}
+StatusCheck $?
 
 cd roboshop-shellscripting
 

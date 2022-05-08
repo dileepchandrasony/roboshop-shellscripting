@@ -56,4 +56,6 @@ then
 else
   echo "DNS record creation failed for $NAME"
 fi
+
+echo -e "\n\n"
 done
