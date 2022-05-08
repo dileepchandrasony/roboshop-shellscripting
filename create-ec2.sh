@@ -10,11 +10,11 @@ then
 fi
 
 
-if ! [ -f "$1" ]
-then
-  echo "You should pass an input file as a parameter to this script"
-  exit 1
-fi
+#if ! [ -f "$1" ]
+#then
+#  echo "You should pass an input file as a parameter to this script"
+#  exit 1
+#fi
 
 
 
