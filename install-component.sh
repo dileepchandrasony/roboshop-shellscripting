@@ -6,7 +6,7 @@ component=$1
 
 ECHO "Connecting to Instance"
 
-sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@54.83.109.215
+sshpass -f rootpwd.sh ssh -o StrictHostKeyChecking=no root@18.234.82.125
 
 StatusCheck $?
 
