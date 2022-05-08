@@ -17,10 +17,10 @@ fi
 #fi
 
 
-while read Arg
+while read input
 do
 
-NAME=${Arg}
+NAME=${input}
 
 aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId &> /dev/null
 
