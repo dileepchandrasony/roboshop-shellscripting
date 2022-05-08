@@ -23,3 +23,6 @@ cd roboshop-shellscripting
 
 make ${component}
 
+ECHO "logging out"
+logout
+StatusCheck $?
